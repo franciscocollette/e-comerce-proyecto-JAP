@@ -14,9 +14,34 @@
       background-color: rgb(248, 249, 250);
     }
   </style>
+
+<!---  esto es sacado de https://www.youtube.com/watch?v=PctSxrQ3JrI  para autenticar con google accounts -->
+<meta name="google-signin-client_id" content="300291312497-u4r53pm25vb66jnklmqhtqbkjq3vv4q3.apps.googleusercontent.com">
+
+
 </head>
 
 <body>
+  <!---  esto es sacado de https://www.youtube.com/watch?v=PctSxrQ3JrI  para autenticar con google accounts -->
+  <script src="https://apis.google.com/js/platform.js" async defer> 
+
+  gapi.load('auth2', function() {
+    gapi.auth2.init()
+    /* Ready. Make a call to gapi.auth2.init or some other API */
+  });
+
+   // esto es sacado de https://www.youtube.com/watch?v=PctSxrQ3JrI no se si sirve de algo ni donde ponerlo
+   function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      }
+
+
+</script>
+
   <main class="mt-5">
     <div class="container" >
       <img id='imglogin' src="img/login.png" alt="login img"> 
@@ -43,6 +68,13 @@
         </form>
       </div>
 
+<br> <br> 
+      <div>
+        <h2> O inicia con Google ! </h2>
+        <br> <br> 
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      </div>
+      
 
       
     </div>

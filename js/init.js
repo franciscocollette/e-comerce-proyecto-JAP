@@ -42,3 +42,7 @@ let getJSONData = function(url){
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() { 
+  document.getElementById('direcUsuario').innerHTML = localStorage.getItem('usuario');
+})
+

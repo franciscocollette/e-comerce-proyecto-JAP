@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("form inicio").addEventListener('submit', validarFormulario); 
     
 
+   
 
 }) 
 
@@ -31,6 +32,7 @@ function validarFormulario (evento) {
         showAlertErrorPass();
     return;
     }
+    localStorage.setItem('usuario', email)
 
     window.location = 'pagina princ.html'
 }

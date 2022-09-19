@@ -196,3 +196,24 @@ a.custom-card:hover {
   display:block;
 }
 
+/*   lo siguiente es para que se vea el nombre de usuario en la barra de naveg     */ 
+
+#direcUsuario { 
+  color: beige;
+}
+
+/* esto es para alinear las imagenes en product-info  */
+.colum-img {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+/* borde de los comentarios */ 
+.comentario { 
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(168, 167, 167);
+  border-radius: 5px;
+  padding: 4px;
+}
