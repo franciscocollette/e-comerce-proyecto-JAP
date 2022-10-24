@@ -19,7 +19,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav w-100 justify-content-between" id="listanavbar">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
@@ -37,10 +37,140 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
+   <!--    <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      </div> -->
+      <br> 
+      <h2 class="text-center p4"> Carrito de Compras</h2>
+      <h4 class="p4"> Articulos a comprar </h4>
+
+      <div class="row"> 
+        <div class="col-sm-2"> </div>
+        <div class="col-sm-2"> <strong>Nombre </strong> </div>
+        <div class="col-sm-2"> <strong>Costo </strong> </div>
+        <div class="col-sm-2"> <strong>Cantidad </strong> </div>
+        <div class="col-sm-2"> <strong>Subtotal </strong> </div>
+      </div>
+      <hr size="4px" style="background-color:rgb(0, 0, 0)" > 
+
+      <div id="articulosCarrito"> </div>
+
+      <h4 class="p4"> Tipo de envío </h4>
+      <br>
+      <input type="radio" name='tipoenvio' id="premium" value="15" >
+      <label for="premium"> Premium: 2 a 5 días (15%) </label>
+      <br>
+      <input type='radio' name="tipoenvio" id="express" value="7"> 
+      <label for="express"> Express: 5 a 8 días (7%) </label>
+      <br>
+      <input type="radio" id="standard" name="tipoenvio" value="5">
+      <label for="standard"> Standard: 12 a 15 días (5%)  </label>
+      <p id='alerttipoenvio' class="mb-1 d-none" style='padding-top:10px; color: red;'> Debe seleccionar un tipo de envío </p>
+      <br> <br> 
+
+      <div class="row"> 
+      <h4 class="p4"> Dirección de envío </h4> <br> 
+      <div class="col-4"> <label for="calle"> Calle </label> <br>
+      <input type="text" id="calle" size="37px" class="form-control "> </div>
+
+      <div class="col-3"> <label for="numero"> Número </label> <br> 
+      <input type="text" id="numero" class="form-control"> </div>
+    </div> <br> 
+    <div class="row"> 
+    <div class="col-4"> <label for="esquina"> Esquina </label> <br>
+      <input type="text" id="esquina" size="31px"  class="form-control"> </div></div>
+      <br> <hr>
+
+
+      <h4 class="p4">Costos </h4>
+
+      <div style='padding:20px;' class="row border "> 
+        <div class="col-4 lead"><strong>Subtotal </strong>   </div>
+        <div style="display:flex; justify-content:end" class="col lead" > USD &nbsp <div id="subtotalgeneral"> 0 </div> </div>
+        <p class="mb-1" style='padding-top:10px;'> Costo total de los productos por cantidad</p>
+      </div>
+
+      <div style='padding:20px;' class="row border "> 
+        <div class="col-4 lead"><strong>Costo de envío </strong>   </div>
+        <div style="display:flex; justify-content:end" class="col lead" > USD  &nbsp <div id="costoenvio">0 </div> </div>
+        <p class="mb-1" style='padding-top:10px;'> Según el tipo de envío</p>
+      </div>
+
+      <div style='padding:20px;' class="row border "> 
+        <div class="col-4 lead"><strong>Total ($)</strong>   </div>
+        <div style="display:flex; justify-content:end" class="col lead" > <strong> USD  &nbsp</strong><strong id="total">0 </strong> </div>
+      </div>
+
+      <br> <hr>
+
+      <h4 class="p4">Forma de pago  </h4>
+      <div class="row">
+         <p id='noselec' class="mb-1 col-3" style='padding-top:10px;'> No ha seleccionado </p>  
+         <p id='tarjcred' class="mb-1 col-3 d-none" style='padding-top:10px;'> Tarjeta de Crédito </p>  
+         <p id='transfbanc' class="mb-1 col-3 d-none" style='padding-top:10px;'> Transferencia Bancaria </p>  
+         <button type="button" class='col-1 btn btn-link ps-0' style='display:flex; padding-top:10px;'
+         data-bs-toggle="modal" id="botonseleccionar" data-bs-target="#modalseleccionar"> Seleccionar </button>
+         <p id='alertpago' class="mb-1 d-none" style='padding-top:10px; color: red;'> Debe seleccionar una forma de pago </p> 
+         <p id='alertcampovacio' class="mb-1 d-none" style='padding-top:10px; color: red;'> Hay campos vacíos </p> 
+
+         <br> <br>  <br><br> 
+        </div>
+      
+        <button type="button" class=" btn-primary btn-lg w-100" id="finalizarcompra"> Finalizar compra </button>
+
+        <hr>
+
+    </div>
+
+    <div class="modal fade" id="modalseleccionar" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Forma de pago</h1>
+        
+          </div>
+          <div class="modal-body">
+
+            <input type="radio" name="formapago" id="tarjcredito" required> 
+            <label for="tarjcredito"> Tarjeta de crédito</label>
+            <br> <br>
+            <div class="row">
+              <div class="col-6"> <label for="nrotarj"> Número de tarjeta </label> <br>
+              <input type="text" id="nrotarj" size="25px"  class="form-control"> </div>
+        
+              <div class="col-4"> <label for="codseg"> Código de seg. </label> <br> 
+              <input type="text" id="codseg"  size="10px"  class="form-control"> </div>
+            </div> <br> 
+            <div class="row"> 
+            <div class="col-6"> <label for="venc"> Vencimiento (MM/AA) </label> <br>
+              <input type="text" id="venc" size="25px"  class="form-control"> </div></div>
+              <br> <hr> 
+
+            <input type="radio" name="formapago" id="transfbancaria" required> 
+            <label for="transfbancaria"> Transferencia bancaria</label>
+            <br> <br>
+            <div class="row"> <div class="col-6">  <label for="nrocuenta"> Número de cuenta </label> <br>
+              <input type="text" id="nrocuenta" size="25px" class="form-control"> </div></div>
+              <br> <hr> 
+
+
+              <button type="button" class="col-sm-2 btn btn-primary btn-sm float-md-end" data-bs-dismiss="modal" aria-label="Close" > Cerrar </button>
+
+          </div>
+          <!-- <div class="modal-footer">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="terminos" required>
+              <label class="form-check-label" for="terminos">Acepto los términos y condiciones del servicio.</label>
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div> -->
+        </div>
       </div>
     </div>
+
+
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -52,6 +182,20 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <div
+      class="alert alert-success alert-dismissible fade"
+      role="alert"
+      id="alert-success"
+    >
+      <p>Su compra ha sido realizada con éxito!</p>
+      <button
+        type="button"
+        onclick="window.location.reload();"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

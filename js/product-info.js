@@ -1,16 +1,21 @@
-PRODU_ID = 'https://japceibal.github.io/emercado-api/products/' + localStorage.getItem('produID') + '.json'
+PRODU_URL = 'https://japceibal.github.io/emercado-api/products/' + localStorage.getItem('produID') + '.json'
 
 URL_COMENTARIOS = 'https://japceibal.github.io/emercado-api/products_comments/' + localStorage.getItem('produID') + '.json'
 
+let produid =  localStorage.getItem('produID')
 
 let produ_obj = {}
 
 function showProdu() {
     let contenido =
    `<div class="row">         
-         <div class="col">
+         <div class="row">
             <div><br> <br> 
-                <h3 class="mb-1">${produ_obj.name}</h3> <br> 
+                <div class=row> <h3 class="mb-1 col">${produ_obj.name}</h3>  
+                <button class='col-sm-2 btn btn-primary btn-lg' style="padding: 2px;" onclick='agregaracarrito(produid)'>
+                 Agregar al Carrito </button>
+                 </div>
+                <br> 
                 <hr> 
                 <h6 class="mb-1"> <strong> Precio </strong>  </h6>
                 <p class="mb-1">${produ_obj.currency} ${produ_obj.cost} </p>
@@ -48,7 +53,7 @@ function showComent (coment_array) {
          ${comentario.description} </p>  
             </div> `
     }} 
-    console.log(coment_array)
+  //  console.log(coment_array)
   
 
     document.getElementById('containerComents').innerHTML = contenido2 
@@ -98,8 +103,27 @@ function addImgs (listaImg) {
     return contIMG; 
 }
 
+function showRelProdu (listaProduRel) { 
+    let contenidoRelProdu = ``
+    for (let produ of listaProduRel ) {
+        contenidoRelProdu += `<div onclick="setProduID(${produ.id})" 
+         class="list-group-item list-group-item-action cursor-active"  style='  float: left;
+         width: 25%;
+         padding: 10px;  border: 1px solid rgba(0, 0, 0, .125) '    >
+          <img src =${produ.image} alt=${produ.name}   style='border:none ' class='img-thumbnail'> 
+         <h6> ${produ.name} </h6> </div> `
+    }
+document.getElementById('produc-relac').innerHTML = contenidoRelProdu;
+
+}
+
+function setProduID(id) {
+    localStorage.setItem("produID", id);
+    window.location = "product-info.html"
+}
+
 document.addEventListener('DOMContentLoaded', function (e) {
-    fetch(PRODU_ID)
+    fetch(PRODU_URL)
         .then(res => {
             if (res.ok) { return res.json() }
             else console.log('error en el fetch del producto, pelotudo')
@@ -107,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         .then(data => {
             produ_obj = data
             showProdu();
+            showRelProdu (produ_obj.relatedProducts) ;
         })
 
         fetch(URL_COMENTARIOS)
