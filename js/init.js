@@ -23,7 +23,8 @@ let hideSpinner = function(){
 }
 
 function deleteUser() { 
-  localStorage.removeItem('usuario');
+  
+  localStorage.removeItem('infoperfil');
 
 }
 
@@ -57,7 +58,7 @@ let getJSONData = function(url){
 document.addEventListener('DOMContentLoaded', function() { 
   document.getElementById('listanavbar').innerHTML +=  `  <li class="nav-item" > <div class="dropdown">
   <a id="direcUsuario" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-  ${localStorage.getItem('usuario')} </a>
+  ${JSON.parse(localStorage.getItem('infoperfil')).email} </a>
   
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>

@@ -52,9 +52,81 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+      <div class="alert alert-danger text-center" id='msjnologged' role="alert">
+        <h4 class="alert-heading">Debe loggear para acceder a su perfil </h4>
       </div>
+      <br> <br>
+
+
+
+
+      <form method="get" id="formperfil" novalidate>
+
+        <hr style=" width:70%; margin-left:auto;  margin-right:auto">
+
+        <div class="row justify-content-center">
+          <div class="col-sm-4">
+            <h3 class="p4"> Perfil</h3>
+          </div>
+          <div class="col-sm-4">
+          </div>
+          <br>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-sm-4 p-2">
+            <label for="nombre"> Primer nombre* </label>
+            <input id='nombre' type="text" class="form-control" required>
+          </div>
+          <div class="col-sm-4 p-2">
+            <label for="segnombre">Segundo nombre</label>
+            <input id="segnombre" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-4 p-2 ">
+            <label for="apellido"> Primer apellido* </label>
+            <input id="apellido" type="text" class="form-control" required>
+          </div>
+          <div class="col-sm-4 p-2">
+            <label for="segapellido"> Segundo apellido</label>
+            <input type="text" id="segapellido" class="form-control">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-4 p-2">
+            <label for="emailperf"> E-mail*</label>
+            <input type="email" class="form-control" id="emailperf" requiered>
+          </div>
+          <div class="col-sm-4 p-2">
+            <label for="telcontacto"> Teléfono de contacto </label>
+            <input type="text" id="telcontacto" class="form-control">
+            <br>
+            <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+            <div id="imgTest"></div>
+            
+            </div>
+          
+        </div>
+
+        <br>
+        <hr style=" width:70%; margin-left:auto;  margin-right:auto">
+        <div class="row justify-content-center">
+          <div class="col-sm-4">
+            <button class="btn btn-primary " type="submit" id="perfilbtn">Guardar cambios</button>
+          </div>
+          <div class="col-sm-4">
+
+          </div>
+          
+        </div>
+
+      </form>
+
+
+
+
     </div>
   </main>
   <footer class="text-muted">

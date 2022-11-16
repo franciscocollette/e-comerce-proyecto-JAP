@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             var scoreUsuario = parseInt(elSelect.options[elSelect.selectedIndex].value)
 
             comentario = `<div class="comentario"> 
-            <p> <strong>${localStorage.getItem('usuario')}</strong>
+            <p> <strong>${JSON.parse(localStorage.getItem('infoperfil')).email}</strong>
              - ${date.getFullYear()}-${date.getMonth() + 1 }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}
             ${addScore(scoreUsuario)}  
             <br>

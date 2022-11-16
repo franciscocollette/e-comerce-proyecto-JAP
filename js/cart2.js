@@ -13,7 +13,7 @@ let divcCostoEnvio = document.getElementById('costoenvio')
 
 let inputCalle = document.getElementById('calle');
 let inputNumero = document.getElementById('numero');
-let inputEsquina = document.getElementById('esquina');
+
 
 function agregarCont(arrayFinal) {
   let contenido = ' ';
@@ -208,6 +208,9 @@ radioTransfBancaria.addEventListener('click', () => { mostrarmetpago(); validarc
 
 
 // esto es para agregar listener a todas las validaciones que aun no tienen listener
+inputCalle.addEventListener('input', () => { validarcompra() })
+inputNumero.addEventListener('input', () => { validarcompra() })
+document.getElementById('esquina').addEventListener('input', () => { validarcompra() })
 inputNroTarj.addEventListener('input', () => { validarcompra() })
 inputCodSeg.addEventListener('input', () => { validarcompra() })
 inputVenc.addEventListener('input', () => { validarcompra() })
@@ -230,11 +233,34 @@ let camposformapagovalid = false;
 function validarcompra() {
   //primero validar que los casilleros de direccion no esten vacios
 
-  document.getElementById("formulario").classList.add("was-validated");
-  document.getElementById("formularioModal").classList.add("was-validated");
 
+  if (inputCalle.value.length <= 0) {
+    inputCalle.classList.add('is-invalid')
 
-  if (inputEsquina.value.length > 0 && inputCalle.value.length > 0 &&
+  }
+  else if (inputCalle.value.length > 0) {
+    inputCalle.classList.add('is-valid')
+    inputCalle.classList.remove('is-invalid')
+  };
+
+  if (inputNumero.value.length <= 0) {
+    inputNumero.classList.add('is-invalid')
+
+  }
+  else if (inputNumero.value.length > 0) {
+    inputNumero.classList.add('is-valid')
+    inputNumero.classList.remove('is-invalid')
+  };
+
+  if (document.getElementById('esquina').value.length <= 0) {
+    document.getElementById('esquina').classList.add('is-invalid')
+  }
+  else if (document.getElementById('esquina').value.length > 0) {
+    document.getElementById('esquina').classList.add('is-valid')
+    document.getElementById('esquina').classList.remove('is-invalid')
+  };
+
+  if (document.getElementById('esquina').value.length > 0 && inputCalle.value.length > 0 &&
     inputNumero.value.length > 0) {
     direccionvalidada = true
   }
